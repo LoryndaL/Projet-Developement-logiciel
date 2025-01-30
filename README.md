@@ -11,10 +11,12 @@ Le code a été refactorisé en plusieurs modules Python :
 - **model_evaluation.py** : Évaluation du modèle et analyse des performances.
 
 ### 2. Tests Unitaires
-Des tests unitaires ont été ajoutés pour assurer la qualité du code. Ces tests sont regroupés dans le dossier `tests/`. Nous utilisons **pytest** pour les tests.
+Des tests unitaires ont été ajoutés pour assurer la qualité du code. Nous utilisons **pytest** pour les tests.
 
 ### 3. Documentation
-Le code est bien documenté à l'aide de **docstrings** dans chaque fonction et module. Le fichier `README.md` fournit des informations générales sur le projet, les étapes de l'exécution, ainsi que des instructions d'installation et d'utilisation.
+Le code a été documenté à l'aide de **docstrings** dans chaque fonction.
 
 ### 4. Gestion de Version avec Git et GitHub
 Nous utilisons **Git** et **GitHub** pour le suivi des versions et la collaboration en équipe. Le flux de travail Git suit une stratégie de branches avec `main`, `develop`, et des branches de fonctionnalités.
+
+## Instructions d'installation et d'utilisation
