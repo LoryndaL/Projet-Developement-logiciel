@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # Ce workflow s'exécute lorsque des changements sont poussés sur la branche 'main'
+      - main
   pull_request:
     branches:
-      - main  # Ce workflow s'exécute lorsqu'un pull request est fait vers la branche 'main'
+      - main
 
 jobs:
   lint:
@@ -19,12 +19,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9  # Définir la version de Python
+          python-version: 3.9
 
-      - name: Install flake8
+      - name: Clear pip cache
+        run: |
+          rm -rf ~/.cache/pip  # Supprimer le cache de pip
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8  # Installer flake8 directement (sans dépendance requirements.txt)
+          pip install -r requirements.txt  # Installer les dépendances
 
       - name: Run flake8
         run: |
@@ -41,14 +45,18 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Install black
+      - name: Clear pip cache
+        run: |
+          rm -rf ~/.cache/pip
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install black  # Installer black directement
+          pip install -r requirements.txt
 
       - name: Run black
         run: |
-          black --check .  # Vérifier si le formatage du code est correct avec black
+          black --check .  # Vérifier le formatage avec black
 
   test:
     runs-on: ubuntu-latest
@@ -61,10 +69,14 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Install pytest
+      - name: Clear pip cache
+        run: |
+          rm -rf ~/.cache/pip
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest  # Installer pytest directement
+          pip install -r requirements.txt
 
       - name: Run pytest
         run: |
