@@ -33,3 +33,4 @@ def preprocess_data():
 if __name__ == "__main__":
     X, X_test, y, passenger_ids = preprocess_data()
     print(X.head())
+    

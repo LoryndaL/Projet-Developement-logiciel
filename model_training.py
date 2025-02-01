@@ -1,6 +1,5 @@
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
 import joblib  # Pour sauvegarder le modèle
+from sklearn.ensemble import RandomForestClassifier
 
 # Chargement des données prétraitées (assurez-vous que le chemin de data_preprocessing est correct)
 from data_preprocessing import preprocess_data
@@ -28,12 +27,12 @@ def train_model(X, y):
 # Sauvegarde du modèle entraîné
 def save_model(model, filename):
     """
-   Sauvegarde le modèle entraîné dans un fichier.
+    Sauvegarde le modèle entraîné dans un fichier.
    
-   Args:
-       model (RandomForestClassifier): Le modèle entraîné.
-       filename (str): Le chemin du fichier où sauvegarder le modèle.
-   """
+    Args:
+        model (RandomForestClassifier): Le modèle entraîné.
+        filename (str): Le chemin du fichier où sauvegarder le modèle.
+    """
     joblib.dump(model, filename)
     print(f"Model saved as {filename}")
 
