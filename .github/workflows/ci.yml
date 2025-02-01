@@ -60,7 +60,7 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git add .
           git commit -m "Auto-format code using Black" || echo "No changes to commit"
-          git push https://github.com/${{ github.repository }} "refs/heads/${{ github.ref }}" --force
+          git push https://github.com/${{ github.repository }} HEAD:${{ github.ref_name }} --force
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
