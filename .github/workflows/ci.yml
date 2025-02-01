@@ -11,28 +11,31 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
 
-      - name: Clear pip cache
-        run: |
-          rm -rf ~/.cache/pip  # Supprimer le cache de pip
+      - name: Cache pip dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Installer les dépendances
+          pip install -r requirements.txt
 
       - name: Run flake8
         run: |
-          flake8 .  # Lancer flake8 pour le linting
+          flake8 --config=.flake8
 
   format:
     runs-on: ubuntu-latest
@@ -45,18 +48,19 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Clear pip cache
-        run: |
-          rm -rf ~/.cache/pip
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run black
+      - name: Run black and auto-fix formatting
         run: |
-          black --check .  # Vérifier le formatage avec black
+          black .
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add .
+          git commit -m "Auto-format code using Black" || echo "No changes to commit"
+          git push
 
   test:
     runs-on: ubuntu-latest
@@ -69,9 +73,13 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Clear pip cache
-        run: |
-          rm -rf ~/.cache/pip
+      - name: Cache pip dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
@@ -80,4 +88,4 @@ jobs:
 
       - name: Run pytest
         run: |
-          pytest  # Exécuter les tests avec pytest
+          pytest
