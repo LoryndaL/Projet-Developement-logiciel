@@ -11,7 +11,9 @@ from src.data_preprocessing import preprocess_data  # noqa: E402
 
 # Définir le chemin relatif pour sauvegarder le modèle
 base_path = os.path.dirname(os.path.abspath(__file__))  # Répertoire du fichier actuel
-model_path = os.path.join(base_path, "../models/titanic_model.pkl")  # Chemin vers le modèle
+model_path = os.path.join(
+    base_path, "../models/titanic_model.pkl"
+)  # Chemin vers le modèle
 
 # Chargement des données et séparation en features et labels
 X, X_test, y, passenger_ids = preprocess_data()
