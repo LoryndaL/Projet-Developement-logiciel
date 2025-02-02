@@ -55,7 +55,7 @@ jobs:
 
       - name: Format code with Black
         run: |
-          black src  # Reformate le dossier src
+          black src  # Reformate le dossier src, sans utiliser --check
 
   test:
     runs-on: ubuntu-latest
