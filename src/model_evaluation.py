@@ -62,7 +62,7 @@ def save_predictions(predictions, passenger_ids):
     Enregistre les résultats dans un fichier CSV nommé 'submission.csv' dans le répertoire spécifié.
     """
     output = pd.DataFrame({"PassengerId": passenger_ids, "Survived": predictions})
-    output.to_csv(submission_path, index=False)  # Utilisation du chemin relatif
+    output.to_csv(submission_path, index=False) 
     print(f"Predictions saved to '{submission_path}'")
 
 if __name__ == "__main__":
