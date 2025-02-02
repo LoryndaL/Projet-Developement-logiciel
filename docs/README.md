@@ -12,6 +12,7 @@ Le projet est organisé en plusieurs modules Python :
 - `src/data_preprocessing.py` : Chargement, nettoyage et transformation des données.
 - `src/model_training.py` : Entraînment et sauvegarde du modèle de prédiction.
 - `src/model_evaluation.py` : Évaluation des performances du modèle.
+- `main_file.py` : Script permettant d'exécuter les différentes étapes du projet Titanic
 - `tests/` : Contient les tests unitaires pour vérifier le bon fonctionnement du code.
 - `docs/` : Documentation du projet.
 - `requirements.txt` : Liste des dépendances du projet.
