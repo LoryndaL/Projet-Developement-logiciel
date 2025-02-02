@@ -64,11 +64,22 @@ Nous utilisons **Git** et **GitHub** avec la stratégie de branches suivante :
 - `develop` : Branche de développement intégrant les nouvelles fonctionnalités.
 - `feature/xxx` : Branches individuelles pour chaque fonctionnalité.
 
+Chaque modification doit passer par une Pull Request (PR) et être revue avant d'être fusionnée.
+
 ## CI/CD avec GitHub Actions
 Nous avons mis en place une intégration et déploiement continus (CI/CD) pour assurer la qualité du code.
 
 - **Linting** : `flake8` et `black` pour vérifier et formater le code.
 - **Tests** : `pytest` exécuté automatiquement sur chaque commit.
+- **Containerisation**: Dockerfile pour exécution en conteneur.
+
+Containerisation (optionnel)
+
+Pour exécuter le projet via Docker :
+```
+docker build -t titanic-prediction .
+docker run titanic-prediction
+```
 
 
 ## Contributions
