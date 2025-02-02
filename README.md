@@ -1,22 +1,86 @@
-# Projet-Developement-logiciel
+# Titanic Survival Prediction
 
 ## Description du projet
-Le projet Titanic Survival Prediction consiste à prédire les chances de survie des passagers du Titanic en utilisant des données historiques. Les données sont traitées et un modèle de machine learning (ML) est construit pour effectuer les prédictions. Le projet initial est disponible sur Kaggle sous forme de notebook, et notre mission consiste à refactoriser ce code en scripts Python modulaires et réutilisables en suivant les bonnes pratiques d’ingénierie logicielle.
 
-## Étapes du Projet
-### 1. Refactorisation du Code
-Le code a été refactorisé en plusieurs modules Python :
-- **data_preprocessing.py** : Chargement, nettoyage et transformation des données.
-- **model_training.py** : Entraînement du modèle de prédiction et sauvegarde.
-- **model_evaluation.py** : Évaluation du modèle et analyse des performances.
+Le projet **Titanic Survival Prediction** vise à prédire les chances de survie des passagers du Titanic en utilisant des données historiques. Il repose sur la refactorisation d'un notebook existant disponible sur Kaggle en scripts Python modulaires et réutilisables.
 
-### 2. Tests Unitaires
-Des tests unitaires ont été ajoutés pour assurer la qualité du code. Nous utilisons **pytest** pour les tests.
+L'objectif est d'appliquer les bonnes pratiques d'ingénierie logicielle, y compris la structuration du code, l'écriture de tests unitaires, l'utilisation de Git/GitHub pour la collaboration et la mise en place d'un pipeline CI/CD.
 
-### 3. Documentation
-Le code a été documenté à l'aide de **docstrings** dans chaque fonction.
+## Structure du projet
+Le projet est organisé en plusieurs modules Python :
 
-### 4. Gestion de Version avec Git et GitHub
-Nous utilisons **Git** et **GitHub** pour le suivi des versions et la collaboration en équipe. Le flux de travail Git suit une stratégie de branches avec `main`, `develop`, et des branches de fonctionnalités.
+- `src/data_preprocessing.py` : Chargement, nettoyage et transformation des données.
+- `src/model_training.py` : Entraînment et sauvegarde du modèle de prédiction.
+- `src/model_evaluation.py` : Évaluation des performances du modèle.
+- `tests/` : Contient les tests unitaires pour vérifier le bon fonctionnement du code.
+- `docs/` : Documentation du projet.
+- `requirements.txt` : Liste des dépendances du projet.
+- `.github/workflows/` : Configuration du pipeline CI/CD avec GitHub Actions.
 
-## Instructions d'installation et d'utilisation
+## Prérequis
+Avant d'exécuter le projet, assurez-vous d'avoir installé :
+
+- **Python 3.8+**
+- **Git**
+- **Poetry** (ou pip pour la gestion des dépendances)
+
+## Installation
+
+1. **Cloner le dépôt GitHub**
+   ```bash
+   git clone https://github.com/LoryndaL/Projet-Developement-logiciel
+   cd titanic-survival-prediction
+   ```
+
+2. **Créer un environnement virtuel et installer les dépendances**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Sur Windows : venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+   *Ou avec Poetry :*
+   ```bash
+   poetry install
+   ```
+
+3. **Exécuter le pipeline complet**
+   ```bash
+   python src/data_preprocessing.py
+   python src/model_training.py
+   python src/model_evaluation.py
+   ```
+
+## Tests
+Les tests unitaires sont définis dans le dossier `tests/`. Pour les exécuter :
+
+```bash
+pytest tests/
+```
+
+## Gestion de version et collaboration
+Nous utilisons **Git** et **GitHub** avec la stratégie de branches suivante :
+- `main` : Branche stable avec les versions validées du projet.
+- `develop` : Branche de développement intégrant les nouvelles fonctionnalités.
+- `feature/xxx` : Branches individuelles pour chaque fonctionnalité.
+
+## CI/CD avec GitHub Actions
+Nous avons mis en place une intégration et déploiement continus (CI/CD) pour assurer la qualité du code.
+
+- **Linting** : `flake8` et `black` pour vérifier et formater le code.
+- **Tests** : `pytest` exécuté automatiquement sur chaque commit.
+
+
+## Contributions
+L'équipe du projet :
+- **EL YAOUTI AYA** (Responsable Data Processing)
+- **LOUFOUA LORYNDA** (Responsable Modélisation)
+- **N'DIAYE MARIAM** (Responsable CI/CD)
+- **SOUMAHORO MAXIMILIEN** (Responsable Documentation)
+
+
+**Date limite : Lundi 3 Février 2025**
+
+---
+Projet réalisé dans le cadre du BUT VCOD (IUT Paris Cité) 2024-2025.
+
