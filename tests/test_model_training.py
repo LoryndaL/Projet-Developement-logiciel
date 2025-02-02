@@ -1,6 +1,12 @@
 import pytest
 import joblib
 import os
+import sys
+
+# Ajouter le dossier src au PYTHONPATH
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
+# Importer les modules après avoir ajouté src au chemin
 from model_training import train_model, save_model
 from data_preprocessing import preprocess_data
 
