@@ -1,4 +1,4 @@
-import joblib  # Pour sauvegarder le modèle
+import joblib  # Pour la sauvegarder du modèle
 from sklearn.ensemble import RandomForestClassifier
 import os
 import sys
