@@ -4,10 +4,10 @@ import sys
 import os
 
 # Ajouter le dossier src au PYTHONPATH
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
 # Importer le module après avoir ajouté src au chemin
-from data_preprocessing import preprocess_data
+from src.data_preprocessing import preprocess_data
 
 def test_preprocess_data():
     # Appel de la fonction de prétraitement

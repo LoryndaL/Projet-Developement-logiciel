@@ -7,8 +7,8 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
 # Importer les modules après avoir ajouté src au chemin
-from model_training import train_model, save_model
-from data_preprocessing import preprocess_data
+from src.model_training import train_model, save_model
+from src.data_preprocessing import preprocess_data
 
 def test_train_model():
     """Test l'entraînement du modèle."""
