@@ -53,16 +53,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run black and auto-fix formatting
+      - name: Check formatting with Black
         run: |
-          black .
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git add .
-          git commit -m "Auto-format code using Black" || echo "No changes to commit"
-          git push https://github.com/${{ github.repository }} HEAD:${{ github.ref_name }} --force
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          black --check .  # Vérifie si le format est correct sans modifier le code
 
   test:
     runs-on: ubuntu-latest

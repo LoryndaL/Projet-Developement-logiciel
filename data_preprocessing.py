@@ -2,8 +2,12 @@ import pandas as pd
 
 
 # Chargement des données depuis les chemins absolus
-train_data = pd.read_csv("/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/train.csv")
-test_data = pd.read_csv("/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/test.csv")
+train_data = pd.read_csv(
+    "/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/train.csv"
+)
+test_data = pd.read_csv(
+    "/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/test.csv"
+)
 
 
 def preprocess_data():
@@ -33,4 +37,3 @@ def preprocess_data():
 if __name__ == "__main__":
     X, X_test, y, passenger_ids = preprocess_data()
     print(X.head())
-    

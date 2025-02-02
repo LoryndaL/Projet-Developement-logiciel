@@ -47,13 +47,17 @@ def save_predictions(predictions, passenger_ids):
 
     Enregistre les résultats dans un fichier CSV nommé 'submission.csv' dans le répertoire spécifié.
     """
-    output = pd.DataFrame({'PassengerId': passenger_ids, 'Survived': predictions})
-    output.to_csv('/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/submission.csv', index=False)
+    output = pd.DataFrame({"PassengerId": passenger_ids, "Survived": predictions})
+    output.to_csv(
+        "/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/submission.csv",
+        index=False,
+    )
     print("Predictions saved to 'submission.csv'")
 
 
 if __name__ == "__main__":
-    model = load_model('/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/titanic_model.pkl')
+    model = load_model(
+        "/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/titanic_model.pkl"
+    )
     predictions = make_predictions(model, X_test)
     save_predictions(predictions, passenger_ids)
-

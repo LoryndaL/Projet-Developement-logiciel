@@ -14,15 +14,15 @@ X, X_test, y, passenger_ids = preprocess_data()
 def train_model(X, y):
     """
     Entraîne un modèle RandomForestClassifier sur les données fournies.
-    
+
     Args:
         X (DataFrame): Les variables du jeu d'entraînement.
         y (Series): La variable cible (Survived).
-    
+
     Returns:
         model : Modèle entraîné.
     """
-    
+
     model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
     model.fit(X, y)
     return model
@@ -32,7 +32,7 @@ def train_model(X, y):
 def save_model(model, filename):
     """
     Sauvegarde le modèle entraîné dans un fichier.
-   
+
     Args:
         model (RandomForestClassifier): Le modèle entraîné.
         filename (str): Le chemin du fichier où sauvegarder le modèle.
@@ -43,4 +43,7 @@ def save_model(model, filename):
 
 if __name__ == "__main__":
     model = train_model(X, y)
-    save_model(model, '/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/titanic_model.pkl')
+    save_model(
+        model,
+        "/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/titanic_model.pkl",
+    )
