@@ -1,11 +1,15 @@
 import pandas as pd
 import joblib
-from data_preprocessing import preprocess_data
+import os
+from src.data_preprocessing import preprocess_data
 
+# Définir les chemins relatifs des fichiers nécessaires
+base_path = os.path.dirname(os.path.abspath(__file__))  # Répertoire du fichier actuel (model_evaluation.py)
+model_path = os.path.join(base_path, '../titanic_model.pkl')  # Chemin relatif vers le modèle
+submission_path = os.path.join(base_path, '../submission.csv')  # Chemin relatif pour sauvegarder les prédictions
 
 # Chargement des données prétraitées
 X, X_test, y, passenger_ids = preprocess_data()
-
 
 # Chargement du modèle sauvegardé
 def load_model(model_path):
@@ -13,13 +17,12 @@ def load_model(model_path):
     Charge le modèle préalablement sauvegardé depuis un chemin spécifié.
 
     Args:
-        model_path (str): Le chemin absolu vers le fichier du modèle sauvegardé
+        model_path (str): Le chemin vers le fichier du modèle sauvegardé
 
     Returns:
-        model_path: Le modèle chargé.
+        model: Le modèle chargé.
     """
     return joblib.load(model_path)
-
 
 # Faire des prédictions
 def make_predictions(model, X_test):
@@ -35,7 +38,6 @@ def make_predictions(model, X_test):
     """
     return model.predict(X_test)
 
-
 # Sauvegarder les prédictions dans un fichier
 def save_predictions(predictions, passenger_ids):
     """
@@ -48,16 +50,10 @@ def save_predictions(predictions, passenger_ids):
     Enregistre les résultats dans un fichier CSV nommé 'submission.csv' dans le répertoire spécifié.
     """
     output = pd.DataFrame({"PassengerId": passenger_ids, "Survived": predictions})
-    output.to_csv(
-        "/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/submission.csv",
-        index=False,
-    )
-    print("Predictions saved to 'submission.csv'")
-
+    output.to_csv(submission_path, index=False)  # Utilisation du chemin relatif
+    print(f"Predictions saved to '{submission_path}'")
 
 if __name__ == "__main__":
-    model = load_model(
-        "/Volumes/PHILIPS UFD/BUT3/Ing_logiciel/PROJET/Projet_Titanic/titanic_model.pkl"
-    )
+    model = load_model(model_path)  # Utilisation du chemin relatif pour charger le modèle
     predictions = make_predictions(model, X_test)
     save_predictions(predictions, passenger_ids)
