@@ -4,8 +4,8 @@ from pathlib import Path
 
 # Définir les chemins relatifs des fichiers CSV à partir du dossier 'src'
 base_path = Path(__file__).resolve().parent.parent  # Répertoire racine du projet
-train_data_path = base_path / "data/train.csv"  # Chemin relatif vers train.csv
-test_data_path = base_path / "data/test.csv"  # Chemin relatif vers test.csv
+train_data_path = base_path / "data/train.csv"  
+test_data_path = base_path / "data/test.csv"  
 
 # Chargement des données depuis les chemins relatifs
 train_data = pd.read_csv(train_data_path)
