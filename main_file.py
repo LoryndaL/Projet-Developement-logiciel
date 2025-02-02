@@ -1,7 +1,3 @@
-"""
-Script principal pour exécuter le projet Titanic.
-L'utilisateur peut choisir l'étape à exécuter.
-"""
 
 import os
 import sys
