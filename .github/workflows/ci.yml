@@ -83,8 +83,8 @@ jobs:
 
       - name: Set PYTHONPATH
         run: |
-          echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV  # Ajoute 'src' au PYTHONPATH
+          echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV  # Définit PYTHONPATH pour inclure src
 
       - name: Run pytest
         run: |
-          pytest tests  # Exécute les tests dans le dossier tests
+          python -m pytest tests  # Exécute les tests dans le dossier tests
