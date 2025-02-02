@@ -3,6 +3,7 @@ import joblib
 import os
 from src.data_preprocessing import preprocess_data
 
+
 # Définir les chemins relatifs des fichiers nécessaires
 base_path = os.path.dirname(os.path.abspath(__file__))  # Répertoire du fichier actuel (model_evaluation.py)
 model_path = os.path.join(base_path, '../titanic_model.pkl')  # Chemin relatif vers le modèle
@@ -10,6 +11,7 @@ submission_path = os.path.join(base_path, '../submission.csv')  # Chemin relatif
 
 # Chargement des données prétraitées
 X, X_test, y, passenger_ids = preprocess_data()
+
 
 # Chargement du modèle sauvegardé
 def load_model(model_path):
@@ -24,6 +26,7 @@ def load_model(model_path):
     """
     return joblib.load(model_path)
 
+
 # Faire des prédictions
 def make_predictions(model, X_test):
     """
@@ -37,6 +40,7 @@ def make_predictions(model, X_test):
         X_test : Un tableau des prédictions effectuées sur les données de test.
     """
     return model.predict(X_test)
+
 
 # Sauvegarder les prédictions dans un fichier
 def save_predictions(predictions, passenger_ids):
@@ -53,7 +57,9 @@ def save_predictions(predictions, passenger_ids):
     output.to_csv(submission_path, index=False)  # Utilisation du chemin relatif
     print(f"Predictions saved to '{submission_path}'")
 
+
 if __name__ == "__main__":
     model = load_model(model_path)  # Utilisation du chemin relatif pour charger le modèle
     predictions = make_predictions(model, X_test)
     save_predictions(predictions, passenger_ids)
+
