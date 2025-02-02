@@ -1,8 +1,8 @@
-
 """
 Script principal pour exécuter le projet Titanic.
 L'utilisateur peut choisir l'étape à exécuter.
 """
+
 import os
 from data_preprocessing import load_data, preprocess_data
 from model_training import train_model, save_model
