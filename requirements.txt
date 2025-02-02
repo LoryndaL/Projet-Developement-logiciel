@@ -3,3 +3,4 @@ flake8
 black
 pandas
 joblib
+scikit-learn
