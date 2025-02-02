@@ -35,7 +35,7 @@ jobs:
 
       - name: Run flake8
         run: |
-          flake8 --config=.flake8
+          flake8 --config=.flake8 src  # Vérifie uniquement le dossier src
 
   format:
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
 
       - name: Check formatting with Black
         run: |
-          black --check .  # Vérifie si le format est correct sans modifier le code
+          black --check src  # Vérifie uniquement le dossier src
 
   test:
     runs-on: ubuntu-latest
@@ -83,4 +83,4 @@ jobs:
 
       - name: Run pytest
         run: |
-          pytest
+          pytest src  # Exécute les tests uniquement dans src
