@@ -1,23 +1,27 @@
 import pandas as pd
 import joblib
 import os
-from src.data_preprocessing import preprocess_data
+import sys
 
+# Ajouter le répertoire src au chemin de recherche des modules Python
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Chargement des données prétraitées
+from src.data_preprocessing import preprocess_data
 
 # Définir les chemins relatifs des fichiers nécessaires
 base_path = os.path.dirname(
     os.path.abspath(__file__)
 )  # Répertoire du fichier actuel (model_evaluation.py)
 model_path = os.path.join(
-    base_path, "../titanic_model.pkl"
+    base_path, "../models/titanic_model.pkl"
 )  # Chemin relatif vers le modèle
 submission_path = os.path.join(
-    base_path, "../submission.csv"
+    base_path, "../data/submission.csv"
 )  # Chemin relatif pour sauvegarder les prédictions
 
 # Chargement des données prétraitées
 X, X_test, y, passenger_ids = preprocess_data()
-
 
 # Chargement du modèle sauvegardé
 def load_model(model_path):
@@ -32,7 +36,6 @@ def load_model(model_path):
     """
     return joblib.load(model_path)
 
-
 # Faire des prédictions
 def make_predictions(model, X_test):
     """
@@ -43,10 +46,9 @@ def make_predictions(model, X_test):
         X_test (pd.DataFrame): Données de test sur lesquelles faire des prédictions.
 
     Returns:
-        X_test : Un tableau des prédictions effectuées sur les données de test.
+        predictions: Un tableau des prédictions effectuées sur les données de test.
     """
     return model.predict(X_test)
-
 
 # Sauvegarder les prédictions dans un fichier
 def save_predictions(predictions, passenger_ids):
@@ -63,10 +65,7 @@ def save_predictions(predictions, passenger_ids):
     output.to_csv(submission_path, index=False)  # Utilisation du chemin relatif
     print(f"Predictions saved to '{submission_path}'")
 
-
 if __name__ == "__main__":
-    model = load_model(
-        model_path
-    )  # Utilisation du chemin relatif pour charger le modèle
+    model = load_model(model_path)  # Utilisation du chemin relatif pour charger le modèle
     predictions = make_predictions(model, X_test)
     save_predictions(predictions, passenger_ids)

@@ -1,20 +1,15 @@
 import pandas as pd
 import os
-
+from pathlib import Path
 
 # Définir les chemins relatifs des fichiers CSV à partir du dossier 'src'
-base_path = os.path.dirname(
-    os.path.abspath(__file__)
-)  # Répertoire du fichier actuel (data_preprocessing.py)
-train_data_path = os.path.join(
-    base_path, "../train.csv"
-)  # Chemin relatif vers train.csv
-test_data_path = os.path.join(base_path, "../test.csv")  # Chemin relatif vers test.csv
+base_path = Path(__file__).resolve().parent.parent  # Répertoire racine du projet
+train_data_path = base_path / "data/train.csv"  # Chemin relatif vers train.csv
+test_data_path = base_path / "data/test.csv"  # Chemin relatif vers test.csv
 
 # Chargement des données depuis les chemins relatifs
 train_data = pd.read_csv(train_data_path)
 test_data = pd.read_csv(test_data_path)
-
 
 def preprocess_data():
     """
@@ -38,7 +33,6 @@ def preprocess_data():
     X_test = pd.get_dummies(test_data[features])
 
     return X, X_test, train_data["Survived"], test_data["PassengerId"]
-
 
 if __name__ == "__main__":
     X, X_test, y, passenger_ids = preprocess_data()
