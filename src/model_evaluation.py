@@ -5,9 +5,15 @@ from src.data_preprocessing import preprocess_data
 
 
 # Définir les chemins relatifs des fichiers nécessaires
-base_path = os.path.dirname(os.path.abspath(__file__))  # Répertoire du fichier actuel (model_evaluation.py)
-model_path = os.path.join(base_path, '../titanic_model.pkl')  # Chemin relatif vers le modèle
-submission_path = os.path.join(base_path, '../submission.csv')  # Chemin relatif pour sauvegarder les prédictions
+base_path = os.path.dirname(
+    os.path.abspath(__file__)
+)  # Répertoire du fichier actuel (model_evaluation.py)
+model_path = os.path.join(
+    base_path, "../titanic_model.pkl"
+)  # Chemin relatif vers le modèle
+submission_path = os.path.join(
+    base_path, "../submission.csv"
+)  # Chemin relatif pour sauvegarder les prédictions
 
 # Chargement des données prétraitées
 X, X_test, y, passenger_ids = preprocess_data()
@@ -59,7 +65,8 @@ def save_predictions(predictions, passenger_ids):
 
 
 if __name__ == "__main__":
-    model = load_model(model_path)  # Utilisation du chemin relatif pour charger le modèle
+    model = load_model(
+        model_path
+    )  # Utilisation du chemin relatif pour charger le modèle
     predictions = make_predictions(model, X_test)
     save_predictions(predictions, passenger_ids)
-

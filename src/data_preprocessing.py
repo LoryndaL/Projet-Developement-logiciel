@@ -3,9 +3,13 @@ import os
 
 
 # Définir les chemins relatifs des fichiers CSV à partir du dossier 'src'
-base_path = os.path.dirname(os.path.abspath(__file__))  # Répertoire du fichier actuel (data_preprocessing.py)
-train_data_path = os.path.join(base_path, '../train.csv')  # Chemin relatif vers train.csv
-test_data_path = os.path.join(base_path, '../test.csv')    # Chemin relatif vers test.csv
+base_path = os.path.dirname(
+    os.path.abspath(__file__)
+)  # Répertoire du fichier actuel (data_preprocessing.py)
+train_data_path = os.path.join(
+    base_path, "../train.csv"
+)  # Chemin relatif vers train.csv
+test_data_path = os.path.join(base_path, "../test.csv")  # Chemin relatif vers test.csv
 
 # Chargement des données depuis les chemins relatifs
 train_data = pd.read_csv(train_data_path)
@@ -39,4 +43,3 @@ def preprocess_data():
 if __name__ == "__main__":
     X, X_test, y, passenger_ids = preprocess_data()
     print(X.head())
-
