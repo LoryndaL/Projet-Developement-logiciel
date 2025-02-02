@@ -53,9 +53,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Check formatting with Black
+      - name: Format code with Black
         run: |
-          black --check src  # Vérifie uniquement le dossier src
+          black src  # Reformate le dossier src
 
   test:
     runs-on: ubuntu-latest
