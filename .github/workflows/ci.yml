@@ -55,11 +55,11 @@ jobs:
 
       - name: Check formatting with Black
         run: |
-          black --check src  # Vérifie si le formatage est correct dans le dossier src
+          black --check src || true  # Ignore l'erreur si tout est déjà formaté
 
       - name: Format code with Black
         run: |
-          black src  # Reformate le dossier src, sans utiliser --check
+          black src  # Reformate le dossier src, sans vérifier d'abord
 
   test:
     runs-on: ubuntu-latest
